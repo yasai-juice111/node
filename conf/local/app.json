@@ -1,0 +1,12 @@
+{
+	"app" : {
+		"mode": "local"
+	},
+	"mysqlConf" : {
+		"host": "localhost",
+		"user": "root",
+		"password": "root",
+		"database": "node",
+		"connectTimeout" : 5000
+	}
+}
