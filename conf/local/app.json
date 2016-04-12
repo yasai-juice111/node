@@ -2,6 +2,12 @@
 	"app" : {
 		"mode": "local"
 	},
+	"casso" : {
+		"authUrl": "https://caoauth.services.isca.jp/as/authorization.oauth2",
+		"clientId": "sugorilunch",
+		"clientSecret": "G17wXjhXKJjArEiWA25DbUTxIa2VWYt4e6JwV655IyQFZKfR3ajGLuQmaodadvqQ",
+		"callbackUrl": "https://sugorilunch.ca.sge-devel.com/auth/callback"
+	},
 	"mysqlConf" : {
 		"host": "localhost",
 		"user": "root",

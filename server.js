@@ -24,10 +24,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// routesSettings
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var auth = require('./routes/auth');
+var top = require('./routes/top');
 app.use('/', routes);
 app.use('/users', users);
+app.use('/auth', auth);
+app.use('/top', top);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
