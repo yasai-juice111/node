@@ -1,1 +1,7 @@
 <h1>detail</h1>
+<img src="../<%= lunchBox.imagePath %>" alt="img">
+<%= lunchBox.name %><br>
+<%= lunchBox.maker %><br>
+<%= currentRecevedAmount %> / <%= lunchBox.amount %><br>
+<a href="/top">選び直す</a>
+<a href="/top/confirm?id=<%= lunchBox.id %>">これにする</a>
