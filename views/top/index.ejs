@@ -1,13 +1,8 @@
-<<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
-</body>
-</html>>
-
 <h1>!!!!!!!!TOP!!!!!!!!!</h1>
-<%= lunchBoxList %>
-<%= userLunchBoxList %>
+<% _.each(lunchBoxList, function(lunchBox){ %>
+	<a href="/top/detail?id=<%= lunchBox.id %>"><img src="<%= lunchBox.imagePath%>" alt="img"></a>
+	<%= lunchBox.name %><br>
+	金額：<%= lunchBox.price %><br>
+	<%= lunchBox.maker %><br>
+	予約状況<%= lunchBox.currentRecevedAmount %> / <%= lunchBox.amount %><br>
+<% }); %>

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{= appSettings.title }}</title>
-    {{ include ../elements/common_head_directive }}
-    {{ include ../elements/global_settings }}
-
+    <title>スゴリランチ</title>
+    <% include common_head_directive %>
   </head>
   <body>
-    {{ include ../elements/common_header }}
-    {{- body }}
-    {{ include ../elements/common_footer }}
+    <% include common_header %>
+    <%- body %>
+    <% include common_footer %>
   </body>
 </html>

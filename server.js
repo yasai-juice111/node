@@ -1,10 +1,13 @@
 // third party
 var express = require('express');
+var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
 var http = require('http');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var _ = require('underscore');
+var dateformat = require('dateformat');
 
 var app = express();
 
@@ -16,6 +19,11 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layout/base');
+app.use(expressLayouts);
+
+app.locals._ = _;
+app.locals.dateformat = dateformat;
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -24,7 +32,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 // routesSettings
 var routes = require('./routes/index');
@@ -44,8 +51,8 @@ app.use(function(req, res, next){
   if(!url[0].match(/\.[a-zA-z0-9_.-]*$/)){
     // req.transaction = transactionManager.getTransaction('onhttp_'+ uid, true, req);
     // req.sequenceTransaction = transactionManager.getTransaction('onhttp_sequence_'+ uid, true, req);
-    req.currentDatetime = new Date();
   }
+  req.currentDatetime = new Date();
   req.locals = {};
 
   // logger
