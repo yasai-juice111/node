@@ -1,7 +1,30 @@
-<h1>detail</h1>
-<img src="../<%= lunchBox.imagePath %>" alt="img">
-<%= lunchBox.name %><br>
-<%= lunchBox.maker %><br>
-<%= currentRecevedAmount %> / <%= lunchBox.amount %><br>
-<a href="/top">選び直す</a>
-<a href="/top/confirm?id=<%= lunchBox.id %>">これにする</a>
+<div id="stage" class="lunch paT0" style="position:relative">
+
+    <h1 class="lunch_title maB10">20xx年xx月xx日のメニュー</h1>
+    <div class="lunch_box_wrapper">
+        <div class="lunch_menu">
+            <div class="lunch_menu_image">
+				<img src="../<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
+            </div>
+            <p class="lunch_menu_name"><%= lunchBox.name %></p>
+            <p class="lunch_menu_name"><%= lunchBox.maker %></p>
+            <p class="lunch_menu_name"><%= lunchBox.price %>円</p>
+            <p class="left">残り <span><%= currentRecevedAmount %>/<span class="color_red"><%= lunchBox.amount %></span></span></p>
+            <div class="order_button">
+                <form action="order_01_submit" method="get" accept-charset="utf-8">
+                    <select name="">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+    <a href="/top" class="buttonM back_button maB10">選びなおす</a>
+	<form action="/top/confirm" method="POST" name="form">
+		<a href="javascript:void(0)" onclick="document.form.submit();return false;" class="buttonM next_button maB10">これにする</a>
+		<input type="hidden" name="id" value="<%= lunchBox.id %>">
+	</form>
+</div>
