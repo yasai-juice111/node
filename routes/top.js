@@ -13,12 +13,12 @@ var topFacade = require(__libpath + '/models/facade/top_facade');
  */
 router.get('/', function(req, res, next) {
 	var saleDate = req.currentDatetime;
-console.log(saleDate);
 	topFacade.index(req, {
 		"saleDate": req.currentDatetime || new Date()
-	},function(err, result) {
-		if (err) {
-			callback(err);
+	},function(error, result) {
+		console.log(error);
+		if (error) {
+		  	res.redirect('/error');
 			return
 		}
 		result.saleDate = saleDate;
@@ -39,9 +39,9 @@ router.get('/detail', function(req, res, next) {
 
 	topFacade.detail(req, {
 		"lunchBoxId": lunchBoxId
-	},function(err, result) {
-		if (err) {
-			callback(err);
+	},function(error, result) {
+		if (error) {
+		  	res.redirect('/error');
 			return
 		}
 		res.render('top/detail', result);
@@ -61,9 +61,9 @@ router.post('/confirm', function(req, res, next) {
 	topFacade.confirm(req, {
 		"lunchBoxId": lunchBoxId,
 		"amount": 1
-	},function(err, result) {
-		if (err) {
-			callback(err);
+	},function(error, result) {
+		if (error) {
+		  	res.redirect('/error');
 			return
 		}
 console.log(result);
@@ -86,9 +86,9 @@ router.post('/execute', function(req, res, next) {
 		"userId": 1,
 		"lunchBoxId": lunchBoxId,
 		"amount": 1
-	},function(err, result) {
-		if (err) {
-			callback(err);
+	},function(error, result) {
+		if (error) {
+		  	res.redirect('/error');
 			return
 		}
 	  	res.redirect('/top/finish');
@@ -132,9 +132,9 @@ router.get('/reserved', function(req, res, next) {
 
 	topFacade.reserved(req, {
 		"userId": 1
-	},function(err, result) {
-		if (err) {
-			callback(err);
+	},function(error, result) {
+		if (error) {
+		  	res.redirect('/error');
 			return
 		}
 		res.render('top/reserved', result);
