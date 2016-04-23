@@ -28,15 +28,15 @@ router.get('/callback', function(req, res, next) {
 
     http.post(casso.oauthTokenUrl)
     .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send([
-        {"grant_type" : "authorization_code"},
-        {"code" : code},
-        {"client_id" : casso.clientId},
-        {"client_secret" : casso.clientSecret},
-        {"redirect_uri" : casso.callbackUrl}
-    ])
-    .end(function(res){
+    .send({"grant_type" : "authorization_code"})
+    .send({"code" : code})
+    .send({"client_id" : casso.clientId})
+    .send({"client_secret" : casso.clientSecret})
+    .send({"grant_type" : "authorization_code"})
+    .send({"redirect_uri" : casso.callbackUrl})
+    .end(function(error, res){
         console.log('//////////');
+        console.log(error);
         console.log(res);
         console.log('//////////');
     });
