@@ -12,7 +12,7 @@
 	},
 	"mysqlConf" : {
 		"host": "localhost",
-		"user": "appdeploy",
+		"user": "update_user",
 		"password": "a3APS5GuSWx",
 		"database": "sugorilunch",
 		"connectTimeout" : 5000
