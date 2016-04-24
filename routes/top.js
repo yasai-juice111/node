@@ -12,17 +12,17 @@ var topFacade = require(__libpath + '/models/facade/top_facade');
  * @param {Function} next ネクスト
  */
 router.get('/', function(req, res, next) {
-	var saleDate = req.currentDatetime;
+
+	var saleDate = req.currentDatetime || new Date();
+
 	topFacade.index(req, {
-		"saleDate": req.currentDatetime || new Date()
+		"saleDate": saleDate
 	},function(error, result) {
-		console.log(error);
 		if (error) {
 		  	res.redirect('/error');
 			return
 		}
 		result.saleDate = saleDate;
-console.log(result);
 		res.render('top/index', result);
 	});
 });
