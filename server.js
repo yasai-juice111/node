@@ -1,3 +1,10 @@
+/**
+ * Timezone setting.
+ */
+var time = require('time')(Date);
+var d = new Date();
+d.setTimezone('Asia/Tokyo');
+
 // third party
 var express = require('express');
 var expressLayouts = require('express-ejs-layouts');

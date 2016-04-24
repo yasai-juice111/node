@@ -1,6 +1,9 @@
-var http = require('superagent');
 var express = require('express');
 var router = express.Router();
+
+// facade
+var authFacade = require(__libpath + '/models/facade/auth_facade');
+
 
 /**
  * 認証
@@ -23,39 +26,28 @@ router.get('/', function(req, res, next) {
     res.redirect(redirectUrl);
 });
 
+/**
+ * 認証コールバック
+ *
+ * @param {Object} req リクエスト
+ * @param {Object} res レスポンス
+ * @param {Function} next ネクスト
+ */
 router.get('/callback', function(req, res, next) {
-    var code = req.param('code');
     var error = req.param('error');
-    if (error) {
+    var code = req.param('code');
+    if (error || !code) {
         res.redirect('/auth');
         return;
     }
-
-    http.post(casso.oauthTokenUrl)
-    .send("grant_type=authorization_code")
-    .send("code="+code)
-    .send("client_id="+casso.clientId)
-    .send("client_secret="+casso.clientSecret)
-    .send("redirect_uri="+casso.callbackUrl)
-    .end(function(error, responseData) {
-        if (error || responseData.statusCode != 200) {
+    authFacade.callback(req, {
+        "code": code
+    },function(error, result) {
+        if (error) {
             res.redirect('/error');
-            return;
+            return
         }
-        console.log('%%%%%%%%%%%%');
-        console.log(responseData.body);
-        console.log('%%%%%%%%%%%%');
-        if (responseData.body && responseData.body.access_token) {
-            http.get(casso.userInfoUrl)
-            .query("access_token="+responseData.body.access_token)
-            .end(function(error, result) {
-                console.log('//////////');
-                console.log(error);
-                console.log(result);
-                console.log('//////////');
-            });
-        }
-
+        res.redirect('/top');
     });
 });
 
