@@ -14,11 +14,15 @@ var authFacade = require(__libpath + '/models/facade/auth_facade');
  * @param {Function} next ネクスト
  */
 router.get('/', function(req, res, next) {
-    // var redirectUrl = '/top';
-    // if (mode == "local") {
-    //     res.redirect(redirectUrl);
-    //     return;
-    // }
+    var redirectUrl = '/top';
+    if (mode == "local") {
+        res.redirect(redirectUrl);
+        return;
+    }
+    if (req.session.user) {
+        res.redirect(redirectUrl);
+        return;
+    }
     redirectUrl = casso.authUrl+
                 "?response_type=code&client_id="+casso.clientId+
                 "&redirect_uri="+casso.callbackUrl+
@@ -39,6 +43,10 @@ router.get('/callback', function(req, res, next) {
     var code = req.param('code');
     if (error || !code) {
         res.redirect('/auth');
+        return;
+    }
+    if (req.session.user) {
+        res.redirect('/top');
         return;
     }
     // TODO facadeで処理する(curlがなぜが叩けなかった)
@@ -75,7 +83,8 @@ router.get('/callback', function(req, res, next) {
                     res.redirect('/error');
                     return
                 }
-                console.log(result);
+                // sessionに保存
+                req.session.user = result.user; 
                 res.redirect('/top');
             });
         });

@@ -13,6 +13,7 @@ var http = require('http');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var _ = require('underscore');
 var dateformat = require('dateformat');
 
@@ -40,16 +41,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session 
+app.use(session({
+  secret: 'sugorilunch',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000 // 1日
+  }
+}));
+
 // routesSettings
 var routes = require('./routes/index');
-var error = require('./routes/error');
-var users = require('./routes/users');
 var auth = require('./routes/auth');
+var error = require('./routes/error');
 var top = require('./routes/top');
 app.use('/', routes);
-app.use('/error', error);
-app.use('/users', users);
 app.use('/auth', auth);
+app.use('/error', error);
 app.use('/top', top);
 
 //Attached some objects and vars to request object.

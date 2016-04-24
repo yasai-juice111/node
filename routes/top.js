@@ -13,6 +13,10 @@ var topFacade = require(__libpath + '/models/facade/top_facade');
  */
 router.get('/', function(req, res, next) {
 console.log(req.session);
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
 	var saleDate = req.currentDatetime || new Date();
 
 	topFacade.index(req, {
@@ -35,6 +39,10 @@ console.log(req.session);
  * @param {Function} next ネクスト
  */
 router.get('/detail', function(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
 	var lunchBoxId = req.param('id');
 
 	topFacade.detail(req, {
@@ -56,6 +64,10 @@ router.get('/detail', function(req, res, next) {
  * @param {Function} next ネクスト
  */
 router.post('/confirm', function(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
 	var lunchBoxId = req.param('id');
 
 	topFacade.confirm(req, {
@@ -80,6 +92,10 @@ console.log(result);
  * @param {Function} next ネクスト
  */
 router.post('/execute', function(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
 	var lunchBoxId = req.param('id');
 
 	topFacade.execute(req, {
@@ -129,7 +145,10 @@ router.get('/finish', function(req, res, next) {
  * @param {Function} next ネクスト
  */
 router.get('/reserved', function(req, res, next) {
-
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
 	topFacade.reserved(req, {
 		"userId": 1
 	},function(error, result) {
