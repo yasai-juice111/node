@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var http = require('superagent');
 
 // facade
 var authFacade = require(__libpath + '/models/facade/auth_facade');
@@ -40,15 +41,46 @@ router.get('/callback', function(req, res, next) {
         res.redirect('/auth');
         return;
     }
-    authFacade.callback(req, {
-        "code": code
-    },function(error, result) {
-        if (error) {
+    // TODO facadeで処理する(curlがなぜが叩けなかった)
+    // accessToken取得
+    http.post(casso.oauthTokenUrl)
+    .send("grant_type=authorization_code")
+    .send("code="+code)
+    .send("client_id="+casso.clientId)
+    .send("client_secret="+casso.clientSecret)
+    .send("redirect_uri="+casso.callbackUrl)
+    .end(function(error, responseData) {
+        if (error || responseData.statusCode != 200) {
             res.redirect('/error');
             return
         }
-        res.redirect('/top');
+        if (!responseData.body || !responseData.body.access_token) {
+            // callback(new Error('Cannot get response body'));
+            res.redirect('/error');
+            return
+        }
+        // 200で返ってきた場合accessTokenを元にユーザ情報取得
+        http.get(casso.userInfoUrl)
+        .query("access_token="+responseData.body.access_token)
+        .end(function(error, result) {
+            if (error || result.statusCode != 200) {
+                res.redirect('/error');
+                return
+            }
+            // 認証
+            authFacade.callback(req, {
+                "caUser": result.body
+            },function(error, result) {
+                if (error) {
+                    res.redirect('/error');
+                    return
+                }
+                console.log(result);
+                res.redirect('/top');
+            });
+        });
     });
+
 });
 
 module.exports = router;
