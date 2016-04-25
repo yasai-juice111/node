@@ -58,10 +58,12 @@ var routes = require('./routes/index');
 var auth = require('./routes/auth');
 var error = require('./routes/error');
 var top = require('./routes/top');
+var reserved = require('./routes/reserved');
 app.use('/', routes);
 app.use('/auth', auth);
 app.use('/error', error);
 app.use('/top', top);
+app.use('/reserved', reserved);
 
 //Attached some objects and vars to request object.
 app.use(function(req, res, next){

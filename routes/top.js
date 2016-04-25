@@ -136,30 +136,4 @@ router.get('/finish', function(req, res, next) {
 	// });
 });
 
-
-/**
- * 予約確認
- *
- * @param {Object} req リクエスト
- * @param {Object} res レスポンス
- * @param {Function} next ネクスト
- */
-router.get('/reserved', function(req, res, next) {
-	console.log(req.session);
-    if (!req.session.user) {
-        res.redirect('/auth');
-        return;
-    }
-	topFacade.reserved(req, {
-		"userId": req.session.user.id
-	},function(error, result) {
-		if (error) {
-	        require(__routespath + '/error').index(req, res, error);
-	        return;
-		}
-		console.log(result);
-		res.render('top/reserved', result);
-	});
-});
-
 module.exports = router;
