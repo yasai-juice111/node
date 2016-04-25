@@ -1,17 +1,20 @@
 <div id="stage" class="lunch paT0" style="position:relative">
-    <h1 class="lunch_title maB10">20xx年xx月xx日のメニュー</h1>
-    <ul class="lunch_list_wrapper">
-	    <% _.each(lunchBoxList, function(lunchBox){ %>
-	        <li class="lunch_menu">
+
+    <% _.each(userLunchBoxList, function(userLunchBox){ %>
+	    <h1 class="lunch_title">20xx年xx月xx日のメニュー</h1>
+	    <ul class="lunch_list_wrapper">
+	        <li class="lunch_menu_layout2 order_flag">
 	            <div class="lunch_menu_image">
-					<a href="/top/detail?id=<%= lunchBox.id %>"><img src="<%= lunchBox.imagePath%>" alt="img"></a>
+	                <img src="<%= userLunchBox.lunchBox.imagePath %>" alt="">
 	            </div>
-	            <p class="lunch_menu_name"><%= lunchBox.name %></p>
-	            <p class="lunch_menu_name">金額：<%= lunchBox.price %></p>
-	            <p class="lunch_menu_name">販売元：<%= lunchBox.maker %></p>
-	            <p class="size_s left">残り <span class="size_m"><%= lunchBox.currentRecevedAmount %>/<span class="color_red"><%= lunchBox.amount %></span></span></p>
-	            <a href="/top/detail?id=<%= lunchBox.id %>" class="order_button">詳細</a>
+	            <div class="text_layout_m maL5">
+	                <p><%= userLunchBox.lunchBox.name %></p>
+	            </div>
+	            <div class="text_layout_m maL5">
+	                <p class="text_right"><%= userLunchBox.lunchBox.price %>円</p>
+	            </div>
+	            <div class="order_button">詳細</div>
 	        </li>
-		<% }); %>
-    </ul>
+	    </ul>
+    <% }); %>
 </div>

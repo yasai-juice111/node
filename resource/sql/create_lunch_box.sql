@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS lunch_box (
   price           INT(10)     UNSIGNED  NOT NULL                  COMMENT '金額',
   amount          INT(10)     UNSIGNED  NOT NULL                  COMMENT '個数',
   image_path      varchar(255)          NOT NULL                  COMMENT '画像パス',
+  store           varchar(255)          NOT NULL                  COMMENT '販売元',
   insert_datetime DATETIME 				      NOT NULL 					        COMMENT '作成日時',
   update_datetime DATETIME              NOT NULL                  COMMENT '更新日時',
   PRIMARY KEY (id),

@@ -10,7 +10,6 @@ var express = require('express');
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
 var http = require('http');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -35,7 +34,6 @@ app.locals.dateformat = dateformat;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -50,6 +48,10 @@ app.use(session({
     maxAge: 24 * 60 * 60 * 1000 // 1日
   }
 }));
+
+// logger
+var logger = require('./lib/util/logger');
+app.use(logger.express);
 
 // routesSettings
 var routes = require('./routes/index');
@@ -72,11 +74,6 @@ app.use(function(req, res, next){
   }
   req.currentDatetime = new Date();
   req.locals = {};
-
-  // logger
-  // req.logger = new Logger(req, 'yakushima');
-  // req.errorLogger = new Logger(req, 'error');
-  // req.sqlLogger = new Logger(req, 'sqlTrace');
 
   // req.timeMap = {};
   // req.time = function(label) {

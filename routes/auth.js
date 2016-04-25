@@ -16,6 +16,14 @@ var authFacade = require(__libpath + '/models/facade/auth_facade');
 router.get('/', function(req, res, next) {
     var redirectUrl = '/top';
     if (mode == "local") {
+        // sessionに保存
+        req.session.user = {
+            "id": 1,
+            "employee_id": "TEST",
+            "employee_type": 1,
+            "company": "テスト",
+            "email": "test@test.co.jp"
+        };
         res.redirect(redirectUrl);
         return;
     }

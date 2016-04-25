@@ -99,7 +99,7 @@ router.post('/execute', function(req, res, next) {
 	var lunchBoxId = req.param('id');
 
 	topFacade.execute(req, {
-		"userId": 1,
+		"userId": req.session.user.id,
 		"lunchBoxId": lunchBoxId,
 		"amount": 1
 	},function(error, result) {
@@ -145,17 +145,19 @@ router.get('/finish', function(req, res, next) {
  * @param {Function} next ネクスト
  */
 router.get('/reserved', function(req, res, next) {
+	console.log(req.session);
     if (!req.session.user) {
         res.redirect('/auth');
         return;
     }
 	topFacade.reserved(req, {
-		"userId": 1
+		"userId": req.session.user.id
 	},function(error, result) {
 		if (error) {
-		  	res.redirect('/error');
-			return
+	        require(__routespath + '/error').index(req, res, error);
+	        return;
 		}
+		console.log(result);
 		res.render('top/reserved', result);
 	});
 });
