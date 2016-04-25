@@ -41,16 +41,43 @@ router.get('/detail', function(req, res, next) {
         res.redirect('/auth');
         return;
     }
-	var lunchBoxId = req.param('id');
+	var userLunchBoxId = req.param('id');
 
 	reservedFacade.detail(req, {
-		"lunchBoxId": lunchBoxId
+		"userLunchBoxId": userLunchBoxId
 	},function(error, result) {
 		if (error) {
-		  	res.redirect('/error');
+	        require(__routespath + '/error').index(req, res, error);
 			return
 		}
-		res.render('top/detail', result);
+		console.log(result);
+		res.render('reserved/detail', result);
+	});
+});
+
+/**
+ * キャンセル実行
+ *
+ * @param {Object} req リクエスト
+ * @param {Object} res レスポンス
+ * @param {Function} next ネクスト
+ */
+router.get('/cancel', function(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
+	var userLunchBoxId = req.param('id');
+
+	reservedFacade.cancel(req, {
+		"userLunchBoxId": userLunchBoxId
+	},function(error, result) {
+		if (error) {
+	        require(__routespath + '/error').index(req, res, error);
+			return
+		}
+		console.log(result);
+		res.render('reserved/detail', result);
 	});
 });
 
