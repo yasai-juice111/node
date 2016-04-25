@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
 	        require(__routespath + '/error').index(req, res, error);
 	        return;
 		}
+		console.log(result);
 		res.render('reserved/index', result);
 	});
 });
