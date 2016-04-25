@@ -27,6 +27,7 @@ console.log(req.session);
 			return
 		}
 		result.saleDate = saleDate;
+		console.log(result);
 		res.render('top/index', result);
 	});
 });
