@@ -7,19 +7,24 @@ d.setTimezone('Asia/Tokyo');
 
 // third party
 var express = require('express');
+var app = express();
+
+// global variable
+require('./lib/util/global');
+
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
 var http = require('http');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
 var _ = require('underscore');
 var dateformat = require('dateformat');
 
-var app = express();
 
-// global変数登録
-require('./lib/util/global');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var mongoose = require('mongoose');
+mongoose.connect(mongodbConf.host);
 
 // view engine setup
 app.set('port', process.env.PORT || 3000);
@@ -36,16 +41,18 @@ app.locals.dateformat = dateformat;
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// session 
+// cookie設定
+app.use(cookieParser());
+// セッションストアを設定
 app.use(session({
-  secret: 'sugorilunch',
-  resave: false,
-  saveUninitialized: false,
+  secret: mongodbConf.secret,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    collection: mongodbConf.collection
+  }),
   cookie: {
-    maxAge: 24 * 60 * 60 * 1000 // 1日
+    httpOnly: false
   }
 }));
 
@@ -76,24 +83,6 @@ app.use(function(req, res, next){
   }
   req.currentDatetime = new Date();
   req.locals = {};
-
-  // req.timeMap = {};
-  // req.time = function(label) {
-  //     this.timeMap[label] = Date.now();
-  // };
-  // req.timeEnd = function(label) {
-  //     req.logger.debug(label + ' time: '+(Date.now() - this.timeMap[label]) + 'ms');
-  // };
-
-  // req.finalize = function(cb){
-  //     if (req.transaction) {
-  //         req.transaction.end();
-  //     }
-  //     if (req.sequenceTransaction) {
-  //         req.sequenceTransaction.end();
-  //     }
-  //     if(cb){ cb(); }
-  // };
   next();
 });
 

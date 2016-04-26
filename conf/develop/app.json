@@ -17,6 +17,11 @@
 		"database": "sugorilunch",
 		"connectTimeout" : 5000
 	},
+	"mongodbConf" : {
+		"secret": "sugorilunch",
+		"host": "mongodb://localhost:27017/user",
+		"collection" : "session"
+	},
 	"logger": {
 		"appenders": [
 			{
