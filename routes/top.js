@@ -107,6 +107,9 @@ router.post('/execute', function(req, res, next) {
 		  	res.redirect('/error');
 			return
 		}
+		req.session.reservedLunchBox = {
+			"lunchBoxId": lunchBoxId
+		}
 	  	res.redirect('/top/finish');
 	});
 });
@@ -121,19 +124,20 @@ router.post('/execute', function(req, res, next) {
  */
 router.get('/finish', function(req, res, next) {
 
-	res.render('top/finish', {});
+	var lunchBoxId = req.session.reservedLunchBox.lunchBoxId;
+	delete req.session.reservedLunchBox;
 
-	// topFacade.execute(req, {
-	// 	"userId": 1,
-	// 	"lunchBoxId": 1,
-	// 	"amount": 1
-	// },function(err, result) {
-	// 	if (err) {
-	// 		callback(err);
-	// 		return
-	// 	}
-	//   	res.redirect('/top/finish');
-	// });
+	topFacade.finish(req, {
+		"userId": req.session.user.id,
+		"lunchBoxId": lunchBoxId
+	},function(error, result) {
+		if (error) {
+		  	res.redirect('/error');
+			return
+		}
+		console.log(result);
+		res.render('top/finish', result);
+	});
 });
 
 module.exports = router;
