@@ -62,7 +62,7 @@ router.get('/detail', function(req, res, next) {
  * @param {Object} res レスポンス
  * @param {Function} next ネクスト
  */
-router.get('/cancel', function(req, res, next) {
+router.post('/cancel', function(req, res, next) {
     if (!req.session.user) {
         res.redirect('/auth');
         return;
@@ -70,6 +70,34 @@ router.get('/cancel', function(req, res, next) {
 	var userLunchBoxId = req.param('id');
 
 	reservedFacade.cancel(req, {
+		"userId": req.session.user.id,
+		"userLunchBoxId": userLunchBoxId
+	},function(error, result) {
+		if (error) {
+	        require(__routespath + '/error').index(req, res, error);
+			return
+		}
+		console.log(result);
+	  	res.redirect('/reserved');
+	});
+});
+
+/**
+ * キャンセル実行結果
+ *
+ * @param {Object} req リクエスト
+ * @param {Object} res レスポンス
+ * @param {Function} next ネクスト
+ */
+router.get('/result', function(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/auth');
+        return;
+    }
+	var userLunchBoxId = req.param('id');
+
+	reservedFacade.cancel(req, {
+		"userId": req.session.user.id,
 		"userLunchBoxId": userLunchBoxId
 	},function(error, result) {
 		if (error) {

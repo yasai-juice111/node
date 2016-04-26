@@ -719,7 +719,7 @@
 
 /* line 61, ../scss/_inc/_core/_general_setting.scss */
 html, body, #pics, #loading, #app_top, .show-content {
-  background-color: #fff;
+  background-color: #fff8e7;
   text-align: center;
 }
 
@@ -1094,18 +1094,18 @@ body {
 /* line 48, ../scss/_inc/_layout/_lunch.scss */
 .footer .lunch_footer .lunch_footer_top {
   display: inline-block;
-  width: 160px;
+  width: 157px;
   padding: 10px 20px;
-  margin: 0 -3px;
+  /* margin: 0 -3px; */
   background: url(../img/99_lunch/btn_003.png);
   background-size: 100% 100%;
 }
 /* line 56, ../scss/_inc/_layout/_lunch.scss */
 .footer .lunch_footer .lunch_footer_order_list {
   display: inline-block;
-  width: 160px;
+  width: 157px;
   padding: 10px 20px;
-  margin: 0 -3px;
+  /* margin: 0 -3px; */
   background: url(../img/99_lunch/btn_003.png);
   background-size: 100% 100%;
 }

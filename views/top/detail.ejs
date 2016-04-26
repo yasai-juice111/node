@@ -1,38 +1,55 @@
 <div id="stage" class="lunch paT0" style="position:relative">
 
     <h1 class="lunch_title maB10">20xx年xx月xx日のメニュー</h1>
-    <div class="lunch_box_wrapper">
-        <div class="lunch_menu_layout">
-            <div class="lunch_menu_image">
-                <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
-            </div>
-            <div class="text_layout_l">
-                <p><%= lunchBox.name %></p>
-                <p class="text_right">残り <span class="size_m"><%= currentRecevedAmount %>/<span class="font_color_orange"><%= lunchBox.amount %></span></span></p>
-            </div>
-            <div class="text_layout_l">
-                <p>店名：<%= lunchBox.maker %></p>
-                <p class="text_right">金額：<%= lunchBox.price %>円</p>
-            </div>
-            <div class="buttonL gray_button w290 maT10 pa0">
-                <div class="text_layout_l w290">
-                    <div class="buttonS dark_gray_button">注文数</div>
-                    <form class="text_right paB10" action="order_01_submit" method="get" accept-charset="utf-8">
-                        <select name="">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                    </form>
+    <% if (lunchBox.amount - currentRecevedAmount > 0) { %>
+        <div class="lunch_box_wrapper">
+            <div class="lunch_menu_layout">
+                <div class="lunch_menu_image">
+                    <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
+                </div>
+                <div class="text_layout_l">
+                    <p><%= lunchBox.name %></p>
+                    <p class="text_right">残り <span class="size_m"><%= lunchBox.amount - currentRecevedAmount %>/<span class="font_color_orange"><%= lunchBox.amount %></span></span></p>
+                </div>
+                <div class="text_layout_l">
+                    <p>店名：<%= lunchBox.maker %></p>
+                    <p class="text_right">金額：<%= lunchBox.price %>円</p>
+                </div>
+                <div class="buttonL gray_button w290 maT10 pa0">
+                    <div class="text_layout_l w290">
+                        <div class="buttonS dark_gray_button">注文数</div>
+                        <form action="/top/execute" method="POST" name="form" class="text_right paB10" accept-charset="utf-8">
+                            <select name="amount">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <input type="hidden" name="id" value="<%= lunchBox.id %>">
+                        </form>
+                    </div>
+                </div>
+                <div class="center">
+                    <a href="/top" class="buttonM back_button maT10 maB10">選びなおす</a>
+                    <a href="javascript:void(0)" onclick="document.form.submit();return false;" class="buttonM next_button maB10 maB10" style="display:inline-block">これにする</a>
                 </div>
             </div>
-            <div class="center">
-                <a href="/top" class="buttonM back_button maT10 maB10">選びなおす</a>
-                <form action="/top/execute" method="POST" name="form" style="display:inline-block">
-                    <a href="javascript:void(0)" onclick="document.form.submit();return false;" class="buttonM next_button maB10 maB10">これにする</a>
-                    <input type="hidden" name="id" value="<%= lunchBox.id %>">
-                </form>
+        </div>
+    <% } else { %>
+        <div class="lunch_box_wrapper">
+            <div class="lunch_menu_layout">
+                <div class="lunch_menu_image opacity">
+                    <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
+                </div>
+                <div class="text_layout_l center">
+                    <p class="font_color_orange">本日は売り切れました</p>
+                </div>
+                <div class="center">
+                    <a href="/top" class="buttonL back_button maT10 maB10">選びなおす</a>
+                </div>
+
+                <div class="sold_out"></div>
             </div>
         </div>
-    </div>
+    <% } %>
+
 </div>

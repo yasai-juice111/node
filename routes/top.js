@@ -98,11 +98,11 @@ router.post('/execute', function(req, res, next) {
         return;
     }
 	var lunchBoxId = req.param('id');
-
+	var amount = req.param('amount');
 	topFacade.execute(req, {
 		"userId": req.session.user.id,
 		"lunchBoxId": lunchBoxId,
-		"amount": 1
+		"amount": amount
 	},function(error, result) {
 		if (error) {
 		  	res.redirect('/error');

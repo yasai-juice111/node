@@ -10,7 +10,7 @@
 	            <div class="text_layout_s maL0">
 	                <p><%= lunchBox.name %></p>
 	                <p>
-	                    残り <span class="size_m"><%= lunchBox.currentRecevedAmount %>/<span class="font_color_orange"><%= lunchBox.amount %></span></span>
+	                    残り <span class="size_m"><%= lunchBox.amount - lunchBox.currentRecevedAmount %>/<span class="font_color_orange"><%= lunchBox.amount %></span></span>
 	                    <span class="text_right"><%= lunchBox.price %>円</span>
 	                </p>
 	            </div>
