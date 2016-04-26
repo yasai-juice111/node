@@ -1,6 +1,6 @@
 <div id="stage" class="lunch paT0" style="position:relative">
 
-    <h1 class="lunch_title">20xx年xx月xx日のメニュー</h1>
+    <h1 class="lunch_title"><%= dateformat(lunchBox.saleDate, 'yyyy年m月dd日') %>の予約</h1>
     <div class="lunch_box_wrapper">
         <div class="lunch_menu_layout2">
             <div class="lunch_menu_image">
@@ -12,7 +12,7 @@
             <hr class="hr_line maT10 maB10">
             <div class="text_layout_l">
                 <p><%= lunchBox.name %></p>
-                <p class="text_right">注文個数：<span>1個</span></p>
+                <p class="text_right">注文個数：<span><%= userLunchBox.amount %>個</span></p>
             </div>
             <div class="text_layout_l">
                 <p>店名：<%= lunchBox.maker %></p>
@@ -21,7 +21,7 @@
             <hr class="hr_line maT5 maB10">
             <div class="text_layout_l">
                 <p>合計金額</p>
-                <p class="text_right"><%= lunchBox.price %>円</p>
+                <p class="text_right"><%= lunchBox.price * userLunchBox.amount %>円</p>
             </div>
             <hr class="hr_line maT10 maB10">
             <div class="center">

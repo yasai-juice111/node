@@ -1,6 +1,6 @@
 <div id="stage" class="lunch paT0" style="position:relative">
 
-    <h1 class="lunch_title">20xx年xx月xx日のメニュー</h1>
+    <h1 class="lunch_title"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
     <ul class="lunch_list_wrapper">
 	    <% _.each(lunchBoxList, function(lunchBox){ %>
 			<li class="lunch_menu_layout">

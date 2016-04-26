@@ -12,7 +12,6 @@ var topFacade = require(__libpath + '/models/facade/top_facade');
  * @param {Function} next ネクスト
  */
 router.get('/', function(req, res, next) {
-console.log(req.session);
     if (!req.session.user) {
         res.redirect('/auth');
         return;
