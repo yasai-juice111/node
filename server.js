@@ -5,20 +5,23 @@ var time = require('time')(Date);
 var d = new Date();
 d.setTimezone('Asia/Tokyo');
 
-// third party
-var express = require('express');
-var app = express();
-
 // global variable
 require('./lib/util/global');
 
+
+// third party
+var express = require('express');
 var expressLayouts = require('express-ejs-layouts');
+var expressValidator = require('express-validator')
 var path = require('path');
 var http = require('http');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var _ = require('underscore');
 var dateformat = require('dateformat');
+
+// app
+var app = express();
 
 
 var session = require('express-session');
@@ -55,6 +58,9 @@ app.use(session({
     httpOnly: false
   }
 }));
+// validator
+app.use(expressValidator);
+
 
 // logger
 var logger = require('./lib/util/logger');
