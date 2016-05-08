@@ -47,6 +47,9 @@ router.get('/', function(req, res, next) {
  * @param {Function} next ネクスト
  */
 router.get('/callback', function(req, res, next) {
+    // if (req.param('error')) {
+    //     req.assert('error').isInt();
+    // }
     var error = req.param('error');
     var code = req.param('code');
     if (error || !code) {
