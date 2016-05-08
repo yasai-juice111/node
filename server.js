@@ -59,7 +59,7 @@ app.use(session({
   }
 }));
 // validator
-app.use(expressValidator);
+// app.use(expressValidator);
 
 
 // logger
