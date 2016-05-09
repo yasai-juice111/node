@@ -1,4 +1,4 @@
-<div id="stage" class="lunch paT0" style="position:relative">
+<div id="stage" class="lunch" style="position:relative">
 
     <h1 class="lunch_title"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
     <ul class="lunch_list_wrapper">
@@ -9,7 +9,7 @@
 	            </div>
 	            <div class="text_layout_s maL0">
 	                <p><%= lunchBox.name %></p>
-	                <p>販売場所：<%= lunchBox.store %></p>
+	                <p><%= lunchBox.store %></p>
 	                <p>
 	                    残り <span class="size_m"><%= lunchBox.amount - lunchBox.currentRecevedAmount %>/<span class="font_color_orange"><%= lunchBox.amount %></span></span>
 	                    <span class="text_right"><%= lunchBox.price %>円</span>

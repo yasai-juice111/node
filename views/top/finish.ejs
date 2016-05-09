@@ -1,9 +1,9 @@
-<div id="stage" class="lunch paT0" style="position:relative">
+<div id="stage" class="lunch" style="position:relative">
 
     <h1 class="lunch_title"><%= dateformat(lunchBox.saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
     <div class="lunch_box_wrapper">
         <div class="lunch_menu_layout2">
-            <div class="lunch_menu_image">
+            <div class="lunch_menu_image opacity">
                 <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
             </div>
             <div class="text_layoutL center maT10 maB10">
@@ -27,6 +27,7 @@
             <div class="center">
                 <a href="/top" class="buttonL back_button maT10 maB10">TOPへ戻る</a>
             </div>
+            <div class="complete"></div>
         </div>
     </div>
 
