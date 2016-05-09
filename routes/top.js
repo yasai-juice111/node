@@ -140,4 +140,26 @@ router.get('/finish', function(req, res, next) {
 	});
 });
 
+/**
+ * 受取
+ *
+ * @param {Object} req リクエスト
+ * @param {Object} res レスポンス
+ * @param {Function} next ネクスト
+ */
+router.post('/receive', function(req, res, next) {
+
+	var userLunchBoxId = req.param('id');
+
+	topFacade.receive(req, {
+		"userLunchBoxId": userLunchBoxId
+	},function(error, result) {
+		if (error) {
+		  	res.redirect('/error');
+			return
+		}
+		res.render('top/receive', result);
+	});
+});
+
 module.exports = router;
