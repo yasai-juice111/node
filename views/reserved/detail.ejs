@@ -3,7 +3,7 @@
     <h1 class="lunch_title"><%= dateformat(lunchBox.saleDate, 'yyyy年m月dd日') %>の予約</h1>
     <% if (!userLunchBox.receiveFlag) { %>
         <div class="lunch_box_wrapper">
-            <div class="lunch_menu_layout2">
+            <div class="lunch_menu_layout2 size_ss">
                 <div class="lunch_menu_image">
                     <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
                 </div>
@@ -13,10 +13,12 @@
                 <hr class="hr_line maT10 maB10">
                 <div class="text_layout_l">
                     <p><%= lunchBox.name %></p>
-                    <p class="text_right">注文個数：<span><%= userLunchBox.amount %>個</span></p>
                 </div>
                 <div class="text_layout_l">
-                    <p>販売場所：<%= lunchBox.store %></p>
+                    <br><p class="text_right">注文個数：<span><%= userLunchBox.amount %>個</span></p>
+                </div>
+                <div class="text_layout_l">
+                    <br><p>販売場所：<%= lunchBox.store %></p>
                 </div>
                 <hr class="hr_line maT10">
                 <hr class="hr_line maT5 maB10">
@@ -40,7 +42,7 @@
         </div>
     <% } else { %>
         <div class="lunch_box_wrapper">
-            <div class="lunch_menu_layout">
+            <div class="lunch_menu_layout size_ss">
                 <div class="lunch_menu_image opacity">
                     <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
                 </div>

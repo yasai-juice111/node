@@ -1,21 +1,20 @@
 <div id="stage" class="lunch" style="position:relative">
 
     <h1 class="lunch_title"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
-    <% _.each(userLunchBoxList, function(userLunchBox){ %>
+    <% _.each(lunchBoxList, function(lunchBox){ %>
 	    <ul class="lunch_list_wrapper">
 	        <li class="lunch_menu_layout2 order_flag">
 	            <div class="lunch_menu_image">
-	                <img src="<%= userLunchBox.lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
+	                <img src="<%= lunchBox.imagePath %>" alt="" width="100%;" height="100%;">
 	            </div>
 	            <div class="text_layout_m maL5">
-	                <p><%= userLunchBox.employeeId %> <%= userLunchBox.company %></p>
-	                <p><%= userLunchBox.lunchBox.name %></p>
-	                <p><%= userLunchBox.lunchBox.store %></p>
+	                <p><%= lunchBox.name %></p>
+	                <p><%= lunchBox.store %></p>
+	                <p>予約数：<%= lunchBox.currentReservedAmount %></p>
 	            </div>
 	            <div class="text_layout_m maL5">
-	            	<br><p class="text_right"><%= userLunchBox.lunchBox.price %>円</p>
+	            	<br><p class="text_right"><%= lunchBox.price %>円</p>
 	            </div>
-        		<a href="/admin/detail?id=<%= userLunchBox.id %>" class="order_button">詳細</a>
 	        </li>
 	    </ul>
     <% }); %>

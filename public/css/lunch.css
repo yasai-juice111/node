@@ -793,6 +793,15 @@ p {
 }
 
 /* line 165, ../scss/_inc/_core/_general_setting.scss */
+.size_ss, .size_SS {
+  font-size: 9px !important;
+}
+/* line 167, ../scss/_inc/_core/_general_setting.scss */
+.size_ss *, .size_SS * {
+  font-size: 9px !important;
+}
+
+/* line 165, ../scss/_inc/_core/_general_setting.scss */
 .size_s, .size_S {
   font-size: 11px !important;
 }

@@ -1,4 +1,5 @@
 var express = require('express');
+var validator = require('validator');
 var router = express.Router();
 
 // facade
@@ -43,9 +44,10 @@ router.get('/detail', function(req, res, next) {
         res.redirect('/auth');
         return;
     }
-	var lunchBoxId = req.param('id');
+	var lunchBoxId = validator.toInt(req.param('id'));
 
 	topFacade.detail(req, {
+		"userId": req.session.user.id,
 		"lunchBoxId": lunchBoxId
 	},function(error, result) {
 		if (error) {
@@ -68,7 +70,7 @@ router.post('/confirm', function(req, res, next) {
         res.redirect('/auth');
         return;
     }
-	var lunchBoxId = req.param('id');
+	var lunchBoxId = validator.toInt(req.param('id'));
 
 	topFacade.confirm(req, {
 		"lunchBoxId": lunchBoxId,
@@ -96,8 +98,9 @@ router.post('/execute', function(req, res, next) {
         res.redirect('/auth');
         return;
     }
-	var lunchBoxId = req.param('id');
-	var amount = req.param('amount');
+	var lunchBoxId = validator.toInt(req.param('id'));
+	var amount = validator.toInt(req.param('amount'));
+
 	topFacade.execute(req, {
 		"userId": req.session.user.id,
 		"lunchBoxId": lunchBoxId,
