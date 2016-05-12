@@ -1,6 +1,9 @@
 var express = require('express');
-var validator = require('validator');
 var router = express.Router();
+
+// third party
+var validator = require('validator');
+var dateformat = require('dateformat');
 
 // facade
 var topFacade = require(__libpath + '/models/facade/top_facade');
@@ -27,7 +30,10 @@ router.get('/', function(req, res, next) {
 			return
 		}
 		result.saleDate = saleDate;
-		console.log(result);
+		result.availablePurchaseFlag = false;
+		if (dateformat(saleDate, 'hh') == '10' || dateformat(saleDate, 'hh') == '11') {
+			result.availablePurchaseFlag = true;
+		}
 		res.render('top/index', result);
 	});
 });
@@ -80,7 +86,6 @@ router.post('/confirm', function(req, res, next) {
 		  	res.redirect('/error');
 			return
 		}
-console.log(result);
 		res.render('top/confirm', result);
 	});
 });
@@ -138,7 +143,6 @@ router.get('/finish', function(req, res, next) {
 		  	res.redirect('/error');
 			return
 		}
-		console.log(result);
 		res.render('top/finish', result);
 	});
 });

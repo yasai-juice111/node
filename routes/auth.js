@@ -35,7 +35,6 @@ router.get('/', function(req, res, next) {
                 "?response_type=code&client_id="+casso.clientId+
                 "&redirect_uri="+casso.callbackUrl+
                 "&scope=openid%20email%20profile";
-    console.log(redirectUrl);
     res.redirect(redirectUrl);
 });
 

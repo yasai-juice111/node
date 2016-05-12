@@ -22,7 +22,6 @@ router.get('/', function(req, res, next) {
 			return
 		}
 		result.saleDate = saleDate;
-		console.log(result);
 		res.render('admin/index', result);
 	});
 });
@@ -45,7 +44,6 @@ router.get('/detail', function(req, res, next) {
 		  	res.redirect('/error');
 			return
 		}
-		console.log(result);
 		res.render('admin/detail', result);
 	});
 });
