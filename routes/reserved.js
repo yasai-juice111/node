@@ -27,6 +27,7 @@ router.get('/', function(req, res, next) {
 	        require(__routespath + '/error').index(req, res, error);
 	        return;
 		}
+		result.saleDate = saleDate;
 		res.render('reserved/index', result);
 	});
 });

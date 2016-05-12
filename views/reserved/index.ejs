@@ -1,7 +1,7 @@
 <div id="stage" class="lunch" style="position:relative">
+    <h1 class="lunch_title"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
 	<% if (userLunchBoxList.length > 0) { %>
 	    <% _.each(userLunchBoxList, function(userLunchBox){ %>
-		    <h1 class="lunch_title"><%= dateformat(userLunchBox.lunchBox.saleDate, 'yyyy年m月dd日') %>の予約</h1>
 		    <ul class="lunch_list_wrapper size_ss">
 		        <li class="lunch_menu_layout2 order_flag">
 		            <div class="lunch_menu_image">
