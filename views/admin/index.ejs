@@ -1,7 +1,7 @@
 <div id="stage" class="lunch" style="position:relative">
 
     <h1 class="lunch_title"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
-    <h1 class="lunch_title size_m color_red">※<%= dateformat(saleDate, 'yyyy年m月dd日  mm時ss秒') %>更新</h1>
+    <h1 class="lunch_title size_m color_red">※<%= dateformat(saleDate, 'yyyy年m月dd日 hh時MM分ss秒') %>更新</h1>
     <% _.each(lunchBoxList, function(lunchBox){ %>
 	    <ul class="lunch_list_wrapper size_m">
 	        <li class="lunch_menu_layout2 order_flag">
