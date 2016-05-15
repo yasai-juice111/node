@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+// third party
+var fs = require('fs');
+var jschardet = require('jschardet');
+
 // facade
 var adminFacade = require(__libpath + '/models/facade/admin_facade');
 
@@ -24,6 +28,56 @@ router.get('/', function(req, res, next) {
 		result.saleDate = saleDate;
 		res.render('admin/index', result);
 	});
+});
+
+
+/**
+ * 入稿
+ *
+ * @param {Object} req リクエスト
+ * @param {Object} res レスポンス
+ * @param {Function} next ネクスト
+ */
+router.get('/upload', function(req, res, next) {
+
+	res.render('admin/upload', {});
+
+	// adminFacade.index(req, {
+	// 	"saleDate": saleDate
+	// },function(error, result) {
+	// 	if (error) {
+	// 	  	res.redirect('/error');
+	// 		return
+	// 	}
+	// 	result.saleDate = saleDate;
+	// });
+});
+
+/**
+ * 入稿実行
+ *
+ * @param {Object} req リクエスト
+ * @param {Object} res レスポンス
+ * @param {Function} next ネクスト
+ */
+router.post('/upload/execute', function(req, res, next) {
+	var files = req.files;
+	fs.readFile(files[0].path, 'utf8', function (err, text) {
+		console.log('//////////////');
+	    console.log(text);
+	    console.log(err);
+		console.log('//////////////');
+		res.render('admin/upload', {});
+	});
+	// adminFacade.upload(req, {
+	// 	"saleDate": saleDate
+	// },function(error, result) {
+	// 	if (error) {
+	// 	  	res.redirect('/error');
+	// 		return
+	// 	}
+	// 	result.saleDate = saleDate;
+	// });
 });
 
 /**
