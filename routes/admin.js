@@ -3,7 +3,6 @@ var router = express.Router();
 
 // third party
 var fs = require('fs');
-var jschardet = require('jschardet');
 
 // facade
 var adminFacade = require(__libpath + '/models/facade/admin_facade');

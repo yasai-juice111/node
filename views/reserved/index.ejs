@@ -1,5 +1,5 @@
 <div id="stage" class="lunch" style="position:relative">
-    <h1 class="lunch_title"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
+    <h1 class="lunch_title maB10"><%= dateformat(saleDate, 'yyyy年m月dd日') %>のメニュー</h1>
 	<% if (userLunchBoxList.length > 0) { %>
 	    <% _.each(userLunchBoxList, function(userLunchBox){ %>
 		    <ul class="lunch_list_wrapper size_ss">
@@ -23,7 +23,7 @@
 		    </ul>
 	    <% }); %>
 	<% } else { %>
-	    <img src="../img/99_lunch/logo_001.png" alt="" width="75%;" height="750%;">
+	    <img src="../img/99_lunch/logo_001.png" alt="" width="75%;" height="75%;">
 	    <div class="center">
 	        <p class="color_red size_m maT10">予約がありません</p>
 	    </div>

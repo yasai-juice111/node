@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
 		}
 		result.saleDate = saleDate;
 		result.availablePurchaseFlag = false;
-		if (dateformat(saleDate, 'hh') == '10' || dateformat(saleDate, 'hh') == '11') {
+		if (dateformat(saleDate, 'HH') == '09' || dateformat(saleDate, 'HH') == '10' || dateformat(saleDate, 'HH') == '11' || mode == 'local') {
 			result.availablePurchaseFlag = true;
 		}
 		res.render('top/index', result);
