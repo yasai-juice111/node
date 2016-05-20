@@ -83,6 +83,7 @@ var error = require('./routes/error');
 var top = require('./routes/top');
 var reserved = require('./routes/reserved');
 var gacha = require('./routes/gacha');
+var download = require('./routes/download');
 
 // admin mode時にrequire
 var admin = require('./routes/admin');
@@ -93,6 +94,7 @@ app.use('/error', error);
 app.use('/top', top);
 app.use('/reserved', reserved);
 app.use('/gacha', gacha);
+app.use('/download', download);
 
 // admin mode時にrequire
 app.use('/admin', admin);
