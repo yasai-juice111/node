@@ -1,0 +1,29 @@
+#form {
+	margin-bottom: 20px;
+}
+
+#form p {
+	text-align: left;
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+#form input[type="text"] {
+	width: 300px;
+	height: 20px;
+	margin-bottom: 20px;
+}
+
+#form input[type="date"] {
+	width: 150px;
+	height: 20px;
+	margin-bottom: 20px;
+}
+
+#form input[type="time"] {
+	width: 150px;
+	height: 20px;
+	margin-bottom: 20px;
+}

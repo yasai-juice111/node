@@ -1,5 +1,15 @@
+<script>
+	// modalが残ってる可能性があるので、初期表示でモーダルを閉じる
+	//$('[data-remodal-id=login]').remodal().close();
+   	$("#login").on("click", function() {
+   		$('[data-remodal-id=login]').remodal().open();
+   	});
+</script>
 <div class="header">
-    <div class="lunch_header">
-        <img src="../img/99_lunch/hr_main.png" alt="" width="100%;" height="100%;">
-    </div>
+	<div class="wrapper">
+		<a href="index.html"><img src="img/logo.png" class="logo" alt="" titl=""/></a>
+		<nav c>
+			<a id="login" href="javascript:void(0)" class="login_btn">Login</a>
+		</nav>
+	</div>
 </div>
