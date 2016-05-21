@@ -1,0 +1,98 @@
+body {
+	font-family: "YuGothic"
+}
+#contents {
+	width: 100%;
+	display: -webkit-box;　/* Safari,Google Chrome用 */
+	display: -moz-box;　/* Firefox用 */
+}
+#sub {
+	width: 300px;
+}
+
+#studioList {
+	padding-left: 20px;
+	padding-top: 50px;
+}
+
+#studioList ul {
+	/*margin-left: 10px;*/
+}
+
+#studioList ul li {
+	margin-bottom: 10px;
+	list-style-type: none;
+}
+
+#studioList ul li.place {
+	font-size: 18px;
+	margin-top: 10px;
+	margin-left:0px;
+}
+
+#studioList ul li a {
+	text-decoration: none;
+	color: #626262;
+}
+
+#main {
+	padding-right: 100px;
+	padding-bottom: 100px;
+	-webkit-box-flex: 1;　/* Safari,Google Chrome用 */
+	-moz-box-flex: 1;　/* Firefox用 */
+}
+
+#studioName {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#calendar {
+	
+}
+/* 1行目の曜日 or 日にち */
+.fc-day-header {
+	font-weight: normal;
+	font-size: 14px;
+}
+.fc-sun { color: red; }  /* 日曜日 */
+.fc-sat { color: blue; } /* 土曜日 */
+
+.fc-time { font-size: 14px; } /* 週と日の時間 */
+
+
+@media (max-width:840px){
+#main {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#sub {
+	display: none;
+}
+    /* 1行目の曜日 or 日にち */
+.fc-day-header {
+	font-weight: normal;
+	font-size: 10px;
+}
+.fc-center h2 {
+	font-size: 15px;
+}
+.fc button {
+	width: 20px;
+	height: 20px;
+	font-size: 12px;
+	padding: 0;
+}
+/* 日曜日 */
+.fc-sun { 
+	color: red;
+	font-size: 10px;
+}
+/* 土曜日 */ 
+.fc-sat { 
+	color: blue; 
+	font-size: 10px;
+}
+
+.fc-time { font-size: 10px; } /* 週と日の時間 */
+}

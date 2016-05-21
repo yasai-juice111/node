@@ -1,3 +1,26 @@
+<header>
+	<div class="wrapper">
+		<a href="index.html"><img src="../img/02_ui/logo.png" class="logo" alt="" titl=""/></a>
+		<nav c>
+			<a id="login" href="javascript:void(0)" class="login_btn">Login</a>
+		</nav>
+	</div>
+</header>
+
+<div class="remodal" data-remodal-id="login" id="modal-area">
+	<!-- モーダルのタイトル -->
+	<h2>ログイン</h2>
+	<div id="form">
+    	<p>ID</p>
+    	<input type="text">
+    	<p>PASSWORD</p>
+    	<input type="text">
+	</div>
+	<!-- キャンセルボタン -->
+	<a class="remodal-cancel" href="#" data-remodal-action="cancel">Cancel</a>
+	<!-- OKボタン -->
+	<a class="remodal-confirm" href="#" data-remodal-action="confirm">OK</a>
+</div>
 <script>
 	// modalが残ってる可能性があるので、初期表示でモーダルを閉じる
 	//$('[data-remodal-id=login]').remodal().close();
@@ -5,11 +28,3 @@
    		$('[data-remodal-id=login]').remodal().open();
    	});
 </script>
-<div class="header">
-	<div class="wrapper">
-		<a href="index.html"><img src="img/logo.png" class="logo" alt="" titl=""/></a>
-		<nav c>
-			<a id="login" href="javascript:void(0)" class="login_btn">Login</a>
-		</nav>
-	</div>
-</div>
