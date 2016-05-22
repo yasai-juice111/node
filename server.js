@@ -65,7 +65,8 @@ app.use(session({
     collection: mongodbConf.collection
   }),
   cookie: {
-    httpOnly: false
+    httpOnly: false,
+    maxAge: 60 * 60 * 1000 // ms
   }
 }));
 // validator

@@ -2,23 +2,25 @@
 	"app" : {
 		"mode": "develop"
 	},
-	"casso" : {
-		"authUrl": "https://caoauth.services.isca.jp/as/authorization.oauth2",
-		"oauthTokenUrl": "https://caoauth.services.isca.jp/as/token.oauth2",
-		"userInfoUrl": "https://caoauth.services.isca.jp/idp/userinfo.openid",
-		"clientId": "sugorilunch",
-		"clientSecret": "G17wXjhXKJjArEiWA25DbUTxIa2VWYt4e6JwV655IyQFZKfR3ajGLuQmaodadvqQ",
-		"callbackUrl": "https://sugorilunch.ca.sge-devel.com/auth/callback"
+	"twitter" : {
+		"consumerKey": "rqYr2TrRHxNbGDh6vz6QGkbrp",
+		"consumerSecret": "AQXQSSWnuLpPJaJ1J6ecfarzAOmUcywfzyWn16NZGKYBeVpuca",
+		"callbackUrl": "http://localhost:3000/auth/twitter/callback"
+	},
+	"facebook" : {
+		"clientId": "267178249975240",
+		"clientSecret": "8bd853c264f8a402b539565c162138ef",
+		"callbackUrl": "http://localhost:3000/auth/facebook/callback"
 	},
 	"mysqlConf" : {
 		"host": "localhost",
 		"user": "update_user",
 		"password": "a3APS5GuSWx",
-		"database": "sugorilunch",
+		"database": "studio",
 		"connectTimeout" : 5000
 	},
 	"mongodbConf" : {
-		"secret": "sugorilunch",
+		"secret": "studio",
 		"host": "mongodb://localhost:27017/user",
 		"collection" : "session"
 	},
