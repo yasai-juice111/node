@@ -84,7 +84,7 @@ var error = require('./routes/error');
 var calendar = require('./routes/calendar');
 
 // admin mode時にrequire
-var admin = require('./routes/admin');
+// var admin = require('./routes/admin');
 
 app.use('/', routes);
 app.use('/auth', auth);
@@ -92,7 +92,7 @@ app.use('/error', error);
 app.use('/calendar', calendar);
 
 // admin mode時にrequire
-app.use('/admin', admin);
+// app.use('/admin', admin);
 
 //Attached some objects and vars to request object.
 app.use(function(req, res, next){

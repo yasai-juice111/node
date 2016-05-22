@@ -3,6 +3,13 @@
 		<div id="studioList">
 			<h3>スタジオ一覧</h3>
 			<ul>
+				<li class="price"><strong><%= studio.name %></strong></li>
+				<% _.each(studio.studioAreaList, function(studioArea) {  %>
+					<li class="price" style="margin-left:20px"><strong><%= studioArea.name %></strong></li>
+					<% _.each(studioArea.studioAreaRoomList, function(studioAreaRoom) {  %>
+						<li style="margin-left:40px"><%= studioAreaRoom.name %></li>
+					<% }); %>
+				<% }); %>
 			</ul>
 		</div>
 	</div>
@@ -14,22 +21,24 @@
 	    <!-- モーダルのタイトル -->
 	    <h2>登録</h2>
 	    <div id="form">
+        <form action="/calendar/regist" method="POST" name="form" accept-charset="utf-8">
 	    	<h3 id="eventDate"></h3>
 	    	<p>タイトル</p>
-	    	<input type="text">
+	    	<input type="text" name="title" value="title">
 			<p>開始日時</p>
-	    	<input id="eventStartDate" type="date" name="date">
-	    	<input id="eventStartTime" type="time" name="example">
+	    	<input id="eventStartDate" type="date" name="startDate" value="startDate">
+	    	<input id="eventStartTime" type="time" name="startTime" value="startTime">
 	    	<p>終了日時</p>
-	    	<input id="eventEndDate" type="date" name="date">
-	    	<input id="eventEndTime" type="time" name="example">
+	    	<input id="eventEndDate" type="date" name="endDate" value="endDate">
+	    	<input id="eventEndTime" type="time" name="endTime" value="endTime">
 	    	<p>タイプ</p>
-	    	<input type="radio" name="event_type" value="booking" checked> 予約可能
-			<input type="radio" name="event_type" value="rental"> 貸し出し
+	    	<input type="radio" name="booking" value="booking" checked> 予約可能
+			<input type="radio" name="rental" value="rental"> 貸し出し
+		</form>
 	    </div>
 	    <!-- キャンセルボタン -->
 	    <a class="remodal-cancel" href="#" data-remodal-action="cancel">Cancel</a>
 	    <!-- OKボタン -->
-	    <a class="remodal-confirm" href="#" data-remodal-action="confirm">OK</a>
+        <a href="javascript:void(0)" onclick="document.form.submit();return false;" class="remodal-confirm" data-remodal-action="confirm" style="display:inline-block">OK</a>
 	</div>
 </div>

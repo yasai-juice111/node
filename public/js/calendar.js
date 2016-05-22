@@ -1,24 +1,24 @@
-var studios = [
-{
-	"place": "渋谷店",
-	"info": [
-		{"id": "100", 
-		 "name": "A101"},
-		{"id": "200",
-		"name": "A102"},
-    	{"id": "300",
-    	"name": "B101"}
-	]
-},
-{
-	"place": "恵比寿店",
-	"info": [
-		{"id": "400",
-		"name": "1号室"},
-    	{"id": "500",
-    	"name": "2号室"}
-	]
-}];
+// var studios = [
+// {
+// 	"place": "渋谷店",
+// 	"info": [
+// 		{"id": "100", 
+// 		 "name": "A101"},
+// 		{"id": "200",
+// 		"name": "A102"},
+//     	{"id": "300",
+//     	"name": "B101"}
+// 	]
+// },
+// {
+// 	"place": "恵比寿店",
+// 	"info": [
+// 		{"id": "400",
+// 		"name": "1号室"},
+//     	{"id": "500",
+//     	"name": "2号室"}
+// 	]
+// }];
 
 
 var studio = {
@@ -77,12 +77,12 @@ var defaultSettingHour = 2
 $(document).ready(function() {
 	$("#studioName").text(studio.place + " " + studio.name) ;
 
-	for(var i in studios){
-    	$("#studioList ul").append("<li class='place'><strong>" + studios[i].place + "</strong></li>");
-    	for(var j in studios[i].info){
-        	$("#studioList ul").append("<li><a href='calendar.html?studio="+studios[i].info[j].id+"'>" + studios[i].info[j].name + "</a></li>");
-    	}
-	}
+	// for(var i in studios){
+ //    	$("#studioList ul").append("<li class='place'><strong>" + studios[i].place + "</strong></li>");
+ //    	for(var j in studios[i].info){
+ //        	$("#studioList ul").append("<li><a href='calendar.html?studio="+studios[i].info[j].id+"'>" + studios[i].info[j].name + "</a></li>");
+ //    	}
+	// }
 
 	// 初期表示を現在時刻にカーソルさせる
 	var current_day = new Date();
