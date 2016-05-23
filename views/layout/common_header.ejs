@@ -1,9 +1,31 @@
 <header>
 	<div class="wrapper">
 		<a href="index.html"><img src="../img/02_ui/logo.png" class="logo" alt="" titl=""/></a>
-		<nav c>
-			<a id="login" href="javascript:void(0)" class="login_btn">Login</a>
-		</nav>
+		<% if (true) { %>
+			<a href="#" class="hamburger"></a>
+			<nav class="responsive">
+				<ul>
+					<li class="icon calendar"><a href="calendar.html">予約カレンダー</a></li>
+					<!-- <li class="icon search" id="search"><a href="javascript:void(0)">予約検索</a></li> -->
+					<li id="menu_compact" class="icon studio menu__single">
+						<a href="#">管理</a>
+						<ul class="menu__second-level">
+	            			<li><a href="shopManagement.html">店舗管理</a></li>
+	            			<li><a href="studioManagement.html">スタジオ管理</a></li>
+	            			<li><a href="#">備品管理</a></li>
+	        			</ul>
+					</li>
+					<li class="menu_spread"><a href="shopManagement.html">店舗管理</a></li>
+	            	<li class="menu_spread"><a href="studioManagement.html">スタジオ管理</a></li>
+	            	<li class="menu_spread"><a href="#">備品管理</a></li>
+	                <li class="icon user"><a href="userManagement.html">studio worcle</a></li>
+				</ul>
+			</nav>
+		<% } else { %>
+			<nav c>
+				<a id="login" href="javascript:void(0)" class="login_btn">Login</a>
+			</nav>
+		<% } %>
 	</div>
 </header>
 
@@ -27,4 +49,18 @@
    	$("#login").on("click", function() {
    		$('[data-remodal-id=login]').remodal().open();
    	});
+
+	// modalが残ってる可能性があるので、初期表示でモーダルを閉じる
+	// $('[data-remodal-id=search]').remodal().close();
+
+	$('.hamburger').on('click', function(e){
+		e.preventDefault();
+		$(this).toggleClass('opned');
+		$('header nav').toggleClass('active');
+		
+	});
+
+	$("#search").on("click", function() {
+   		$('[data-remodal-id=search]').remodal().open();
+   	});   	
 </script>

@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
 			return
 		}
 		result.saleDate = saleDate;
+		result.layout = 'layout/base_without_footer';
 		res.render('admin/index', result);
 	});
 });
